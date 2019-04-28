@@ -49,3 +49,16 @@ public class ApplicationStart {
 - - - Usada com DAO's
 - - @Service
 - - - Usada na camada de serviço
+
+## Spring Boot Essentials 03 - Configurando hot swap
+
+- Adicionamos a dependência do devtools para fazer o hot swap
+
+```
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+```
+
