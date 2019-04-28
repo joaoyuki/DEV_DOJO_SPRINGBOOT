@@ -37,3 +37,15 @@ public class ApplicationStart {
 	
 }
 ```
+## Spring Boot Essentials 02 - @Component, @Autowired e @SpringBootApplication
+
+- O Spring indica que deixemos a nossa classe principal, no pacote raiz, assim não é necessário que toda vez especificar os pacotes aonde estão nossos códigos
+
+- No Spring, temos vários tipos de anoções para indicar componentes:
+- - @Component
+- - Todas as anotações abaixo vem de **@Component**
+- - - Marca a classe para ser lida pelo **@ComponentScan**
+- - @Repository
+- - - Usada com DAO's
+- - @Service
+- - - Usada na camada de serviço
