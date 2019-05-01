@@ -62,3 +62,15 @@ public class ApplicationStart {
 		</dependency>
 ```
 
+## Spring Boot Essentials 05 - Padrões REST e POST pt 01
+
+- O Spring possui uma classe para usarmos quando formos retornar alguma informação de um controller **ResponseEntity**
+
+```
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<?> listAll() {
+		return new ResponseEntity<>(Student.studentList, HttpStatus.OK);
+	}
+```
+
+- - É indicado sempre devolver o status da requisição, como o ***HttpStatus* por exemplo
