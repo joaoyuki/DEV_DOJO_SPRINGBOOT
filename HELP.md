@@ -74,3 +74,6 @@ public class ApplicationStart {
 ```
 
 - - É indicado sempre devolver o status da requisição, como o ***HttpStatus* por exemplo
+
+## Spring Boot Essentials 06 - Padrões REST e POST pt 02
+
