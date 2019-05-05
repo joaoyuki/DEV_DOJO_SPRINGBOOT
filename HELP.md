@@ -77,3 +77,32 @@ public class ApplicationStart {
 
 ## Spring Boot Essentials 06 - Padrões REST e POST pt 02
 
+```
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<?> save(@RequestBody Student student) {
+		Student.studentList.add(student);
+		return new ResponseEntity<>(student, HttpStatus.OK);
+	}
+```
+
+## Spring Boot Essentials 07 - Padrões REST e PUT e DELETE pt 03
+
+## Spring Boot Essentials 08 - Adicionando Spring Data JPA com MySQL pt 01
+
+- - Adicionado a dependência do Spring Boot Data JPA
+```
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>	
+```
+
+- - Criando um repositório com spring basta extender a classe CrudRepository
+
+```
+public interface StudentRepository extends CrudRepository<Student, Long>{
+	
+	List<Student> findByName(String name);
+	
+}
+```
