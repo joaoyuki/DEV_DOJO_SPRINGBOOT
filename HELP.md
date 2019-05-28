@@ -123,3 +123,22 @@ public class ResourceNotFoundException extends RuntimeException {
 }
 
 ```
+
+## Spring Boot Essentials 11 - Tratamento de erros em REST pt 02 - Exception Handler
+
+- - Podemos criar uma classe que será chamada sempre que ocorrer um exception no Spring, utilizando a anotação **@ControllerAdvice**
+```
+@ControllerAdvice
+public class RestExceptionHandler {
+	
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException resourceNotFoundException) {
+		ResourceNotFoundDetails details = new ResourceNotFoundDetails("Resource not found", HttpStatus.NOT_FOUND.value(), resourceNotFoundException.getMessage(), new Date().getTime(), resourceNotFoundException.getClass().getName());
+		
+		return new ResponseEntity<>(details, HttpStatus.NOT_FOUND);
+	}
+
+}
+
+```
+- - Ao anotarmos um método com **@ExceptionHandler(ResourceNotFoundException.class)** dizemos que sempre que essa exceção for lançada, deverá chamar esse método
