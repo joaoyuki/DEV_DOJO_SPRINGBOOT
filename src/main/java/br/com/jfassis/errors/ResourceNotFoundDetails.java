@@ -18,6 +18,26 @@ public class ResourceNotFoundDetails {
 
 	public ResourceNotFoundDetails() {
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public Long getTimestamp() {
+		return timestamp;
+	}
+
+	public String getDeveloperMessage() {
+		return developerMessage;
+	}
 	
 	
 	

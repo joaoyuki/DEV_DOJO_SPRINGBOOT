@@ -142,3 +142,22 @@ public class RestExceptionHandler {
 
 ```
 - - Ao anotarmos um método com **@ExceptionHandler(ResourceNotFoundException.class)** dizemos que sempre que essa exceção for lançada, deverá chamar esse método
+
+## Spring Boot Essentials 12 - Tratamento de erros em REST pt 03 - Transações
+
+- - Podemos fazer com que, sempre que as tabelas forem criadas, usem a **engine InnoDB** que ajuda no controle de transações.
+- - - Por padrão, no Linux as tabelas são criadas como InnoDB, e no windos, são criadas como MyISAM
+- - - - application.properties
+``` 
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+```
+
+- - Podemos adicionar a anotação **@Transactional** em um método que faça alteração no banco, e caso de um erro, um RuntimeException, o próprio spring se encarrega de fazer o rollback no banco de dados
+```
+@PostMapping
+@Transactional
+public ResponseEntity<?> save(@RequestBody Student student) {
+	return new ResponseEntity<>(studentRepository.save(student), HttpStatus.OK);
+}
+```
+
