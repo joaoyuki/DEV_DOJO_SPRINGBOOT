@@ -164,3 +164,39 @@ public ResponseEntity<?> save(@RequestBody Student student) {
 ## Spring Boot Essentials 13 - Tratamento de erros em REST pt 04 - Validação de campos
 
 - - O Java possui a **JSR303 Bean Validation**, que nos auxilia ma validação de nossas classes, evitando muitos IF's pelo código
+```
+@Entity
+public class Student extends AbstractEntity{
+
+	@NotEmpty
+	private String name;
+	
+	@Email
+	@NotEmpty
+	private String email;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+}
+
+
+
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException methodArgumentNotValidException) {
+		
+		List<FieldError> fieldErrors = methodArgumentNotValidException.getBindingResult().getFieldErrors();
+		String fields = fieldErrors.stream().map(FieldError::getField).collect(Collectors.joining(","));
+		String Fieldmessages = fieldErrors.stream().map(FieldError::getDefaultMessage).collect(Collectors.joining(","));
+		ValidationErrorDetails details = new ValidationErrorDetails(fields, Fieldmessages);
+		return new ResponseEntity<>(details, HttpStatus.NOT_FOUND);
+	}
+```
+
+## Spring Boot Essentials 14 - Tratamento de erros em REST pt 05 - Padronizando todos os erros
+
