@@ -161,3 +161,6 @@ public ResponseEntity<?> save(@RequestBody Student student) {
 }
 ```
 
+## Spring Boot Essentials 13 - Tratamento de erros em REST pt 04 - Validação de campos
+
+- - O Java possui a **JSR303 Bean Validation**, que nos auxilia ma validação de nossas classes, evitando muitos IF's pelo código
